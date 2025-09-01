@@ -1,3 +1,29 @@
+const trabajos = [
+    {
+        photo: "https://aylineoff.github.io/trabajo-previo-a-la-prueba/img/imagen_1.webp",
+        title: "Trabajo - Luminico Proyecto II",
+        description: "Trabajo de Proyecto II, representacion de dos conceptos a traves de un objeto luminico",
+    },
+    {
+        photo: "https://aylineoff.github.io/trabajo-previo-a-la-prueba/img/imagen_3.webp",
+        title: "Fanzine - Proyecto III",
+        description: "Realización de Fanzine que demostrara una problematica social o politica, que se destacara no con el formato habitual",
+    },
+    {
+        photo: "https://aylineoff.github.io/trabajo-previo-a-la-prueba/img/imagen_2.webp",
+        title: "Objeto sentimental - Proyecto III",
+        description: "Objeto o artefacto emocional que pueda expresar una reflexion personal de nosotros",
+    },
+    {
+        photo: "https://aylineoff.github.io/trabajo-previo-a-la-prueba/img/imagen_4.webp",
+        title: "Representacion del movimiento - Representacion visual",
+        description: "Dependiendo de lo que nosotros demostrara movimiento, realizamos una obra o trabajo que pudiera sentirse eso",
+    }, 
+];
+
+
+
+
 const datos = [
     {
         id: 1,
@@ -210,7 +236,7 @@ var otrxs = [];
 
 
 datos.forEach((x) => {
-    if (x.nombre == "Martina Urzúa") {
+    if (x.nombre == "Ayline Marín") {
         yo = x;
     } else {
         otrxs.push(x);
@@ -236,7 +262,14 @@ function setup() {
     //Lo que sigue es JavaScript a secas
     otrxs.forEach((x)=>{
         document.querySelector("#otredad").innerHTML += `<div><a href="${x.cuenta}"><img src="${x.foto}" title="${x.esperado}"></a></div>`;
-    })
+    });
+      //Copy-paste, y arreglín
+    trabajos.forEach((x)=>{
+        document.querySelector("#portafolio").innerHTML += `<div><img src="${x.photo}"><p>${x.title}</p></div>`;
+    });
+    
+    document.querySelector("#autoria").innerHTML = yo.nombre;
+
     //Ahora vuelvo al p5.js
     noStroke();
 }
@@ -244,12 +277,10 @@ function setup() {
 function draw() {
     background("white");
     orbitControl();
-    pointLight(255, 255, 255, valor / 3, valor / 2, 50);
+    pointLight(255, 0, 255, valor / 3, valor / 2, 50);
     specularMaterial(255);
     shininess(50);
     metalness(1);
-
-    // Add shapes.
     push();
     fill("red");
     translate(0, -valor / 4, -valor / 7);
@@ -259,8 +290,5 @@ function draw() {
     fill("blue");
     sphere(valor / 5);
     pop();
-}
 
-function windowResized() {
-    resizeCanvas(valor, valor);
 }
